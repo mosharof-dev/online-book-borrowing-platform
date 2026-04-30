@@ -1,15 +1,14 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import NavBar from "@/Components/shared/NavBar";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+
 
 export const metadata = {
   title: "Book Borrowing Platform",
@@ -18,8 +17,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en" className={`${geistSans.variable}  h-full antialiased`} data-theme="dark">
+      <body className="min-h-full flex flex-col bg-[#0F172A] text-white">
+        <NavBar />
+        <main className="grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
+          {children}
+        </main>
+      
+      </body>
     </html>
   );
 }
