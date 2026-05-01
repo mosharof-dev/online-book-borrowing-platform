@@ -99,7 +99,7 @@ const Navbar = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
               </svg>
             </div>
-            <ul tabIndex={0} className="menu dropdown-content mt-4 z-[1] p-4 shadow-2xl bg-[#1E293B] rounded-2xl w-60 border border-white/5 flex flex-col gap-2">
+            <ul tabIndex={0} className="menu dropdown-content mt-4 z-1 p-4 shadow-2xl bg-[#1E293B] rounded-2xl w-60 border border-white/5 flex flex-col gap-2">
               {navLinks}
               <div className="divider bg-white/5 h-px my-1"></div>
               {/* Mobile Auth Buttons inside 3-dot menu */}
@@ -119,7 +119,7 @@ const Navbar = () => {
       </div>
       
       {/* Pro-level Glowing Gradient Border Line at the bottom of Navbar */}
-      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#FB8C00]/40 to-transparent"></div>
+      <div className="absolute bottom-0 left-0 w-full h-px bg-linear-to-r from-transparent via-[#FB8C00]/40 to-transparent"></div>
     </header>
   );
 };
