@@ -1,11 +1,17 @@
-import Link from "next/link";
+import Banner from "@/Components/home/Banner";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <h1>Home</h1>
-      <Link href="/about">About</Link>
-
+    <div className="w-full flex flex-col gap-10">
+      <Banner />
+      
+      {/* 
+        Next steps for Home Page:
+        - Marquee Section
+        - Featured Books Section
+        - Extra Section 1
+        - Extra Section 2 
+      */}
     </div>
   );
 }
