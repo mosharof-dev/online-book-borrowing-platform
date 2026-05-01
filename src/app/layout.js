@@ -17,13 +17,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${geistSans.variable}  h-full antialiased`} data-theme="dark">
-      <body className="min-h-full flex flex-col bg-[#0F172A] text-white">
+    <html lang="en" className={`${geistSans.variable}  h-full antialiased`} data-theme="light">
+      <body className="min-h-full flex flex-col">
         <NavBar />
         <main className="grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
           {children}
         </main>
-      
+
       </body>
     </html>
   );
