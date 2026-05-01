@@ -3,13 +3,13 @@ import React from 'react';
 
 const Banner = () => {
     return (
-        <div className="relative w-full h-125 md:h-150 rounded-xl overflow-hidden mb-12 shadow-2xl border border-white/10 bg-[#1E293B]">
+        <div className="relative w-full h-125 md:h-150 rounded-xl overflow-hidden shadow-2xl border border-white/10 bg-[#1E293B]">
             {/*Image with Overlay */}
             <div
                 className="absolute inset-0 bg-cover bg-center"
                 style={{ backgroundImage: "url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=2000&auto=format&fit=crop')" }}
             >
-                {/* Gradient Overlay - slightly brighter than the body background so it stands out */}
+              
                 <div className="absolute inset-0 bg-linear-to-r from-[#1E293B] via-[#1E293B]/90 to-[#1E293B]/40"></div>
             </div>
 
@@ -21,7 +21,7 @@ const Banner = () => {
                         📚 Your Digital Library
                     </div>
 
-                    {/* Heading - Required by Assignment */}
+                    {/* Heading  */}
                     <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white leading-tight mb-6 tracking-tight">
                         Find Your <br className="hidden md:block" />
                         <span className="text-transparent bg-clip-text bg-linear-to-r from-[#FB8C00] to-yellow-400">
@@ -53,6 +53,7 @@ const Banner = () => {
                             Featured Books
                         </Link>
                     </div>
+                    
                 </div>
             </div>
 
