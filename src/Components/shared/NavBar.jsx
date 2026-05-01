@@ -63,7 +63,7 @@ const Navbar = () => {
               </svg>
             </div>
             <span className="text-lg md:text-xl font-extrabold tracking-tight text-white">
-              Book<span className="text-[#FB8C00]">Borrow</span>
+              Book<span className="text-[#FB8C00]">Borrowing</span>
             </span>
           </Link>
         </div>

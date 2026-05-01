@@ -1,6 +1,8 @@
 import Banner from "@/Components/home/Banner";
 import NoticeMarquee from "@/Components/home/NoticeMarquee";
 import FeaturedBooks from "@/Components/home/FeaturedBooks";
+import HowItWorks from "@/Components/home/HowItWorks";
+import LibraryBenefits from "@/Components/home/LibraryBenefits";
 
 export default function Home() {
   return (
@@ -11,11 +13,11 @@ export default function Home() {
       {/* Featured Books Section */}
       <FeaturedBooks />
 
-      {/* 
-        Next steps for Home Page:
-        - Extra Section 1
-        - Extra Section 2 
-      */}
+      {/* Extra Section 1: How It Works */}
+      <HowItWorks />
+
+      {/* Extra Section 2: Modern Library Benefits */}
+      <LibraryBenefits />
     </div>
   );
 }
