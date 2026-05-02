@@ -103,7 +103,7 @@ const TrendingSlider = () => {
         slideShadows: true,
     }}
     autoplay={{
-        delay: 3500,
+        delay: 2500,
         disableOnInteraction: false,
     }}
     pagination={{ clickable: true }}
