@@ -6,6 +6,7 @@
       "author": "Marijn Haverbeke",
       "description": "Dive deep into the JavaScript language to show you how to write beautiful, effective code. It has been updated to reflect the current state of JavaScript and web browsers, with new material on features like class notation, arrow functions, iterators, async functions, template strings, and block scope. This book will teach you to write elegant and effective code.",
       "category": "Tech",
+      "available_quantity": 8,
       "image_url": "https://covers.openlibrary.org/b/isbn/9781593279509-L.jpg"
     },
     {
@@ -14,6 +15,7 @@
       "author": "Robert C. Martin",
       "description": "Even bad code can function. But if code isn't clean, it can bring a development organization to its knees. Every year, countless hours and significant resources are lost because of poorly written code. This handbook of agile software craftsmanship will help developers write clean, maintainable, and efficient code, teaching you the principles, patterns, and practices of writing clean code.",
       "category": "Tech",
+      "available_quantity": 5,
       "image_url": "https://covers.openlibrary.org/b/isbn/9780132350884-L.jpg"
     },
     {
@@ -22,6 +24,7 @@
       "author": "Paulo Coelho",
       "description": "Paulo Coelho's enchanting novel has inspired a devoted following around the world. This story, dazzling in its powerful simplicity and inspiring wisdom, is about an Andalusian shepherd boy named Santiago who travels from his homeland in Spain to the Egyptian desert in search of a treasure buried in the Pyramids. Along the way, he learns about listening to his heart and reading the omens strewn along life's path.",
       "category": "Story",
+      "available_quantity": 7,
       "image_url": "https://covers.openlibrary.org/b/isbn/9780061122415-L.jpg"
     },
     {
@@ -30,6 +33,7 @@
       "author": "Stephen Hawking",
       "description": "Was there a beginning of time? Could time run backwards? Is the universe infinite or does it have boundaries? These are just some of the questions considered in an internationally acclaimed masterpiece by one of the world's greatest thinkers. It begins by reviewing the great theories of the cosmos from Newton to Einstein, before delving into the secrets which still lie at the heart of space and time.",
       "category": "Science",
+      "available_quantity": 6,
       "image_url": "https://covers.openlibrary.org/b/isbn/9780553380163-L.jpg"
     },
     {
@@ -38,6 +42,7 @@
       "author": "David Thomas, Andrew Hunt",
       "description": "These lessons have helped a generation of programmers examine the very essence of software development, independent of any particular language, framework, or methodology. The Pragmatic philosophy has spawned hundreds of books, screencasts, and audio books. It covers topics ranging from personal responsibility and career development to architectural techniques for keeping your code flexible and easy to adapt.",
       "category": "Tech",
+      "available_quantity": 4,
       "image_url": "https://covers.openlibrary.org/b/isbn/9780135957059-L.jpg"
     },
     {
@@ -46,6 +51,7 @@
       "author": "Carl Sagan",
       "description": "Cosmos has 13 heavily illustrated chapters, corresponding to the 13 episodes of the Cosmos television series. In the book, Sagan explores 15 billion years of cosmic evolution and the development of science and civilization. It traces the origins of knowledge and the scientific method, mixing science and philosophy, and speculates to the future of science.",
       "category": "Science",
+      "available_quantity": 9,
       "image_url": "https://covers.openlibrary.org/b/isbn/9780345331359-L.jpg"
     },
     {
@@ -54,6 +60,7 @@
       "author": "Harper Lee",
       "description": "The unforgettable novel of a childhood in a sleepy Southern town and the crisis of conscience that rocked it. 'To Kill A Mockingbird' became both an instant bestseller and a critical success when it was first published in 1960. It went on to win the Pulitzer Prize in 1961 and was later made into an Academy Award-winning film, also a classic.",
       "category": "Story",
+      "available_quantity": 3,
       "image_url": "https://covers.openlibrary.org/b/isbn/9780060935467-L.jpg"
     },
     {
@@ -62,6 +69,7 @@
       "author": "Yuval Noah Harari",
       "description": "From a renowned historian comes a groundbreaking narrative of humanity’s creation and evolution—a #1 international bestseller—that explores the ways in which biology and history have defined us and enhanced our understanding of what it means to be 'human'. Harari integrates history and science to reconsider accepted narratives, connect past developments with contemporary concerns.",
       "category": "Science",
+      "available_quantity": 10,
       "image_url": "https://covers.openlibrary.org/b/isbn/9780062316097-L.jpg"
     },
     {
@@ -70,6 +78,7 @@
       "author": "Khaled Hosseini",
       "description": "The unforgettable, heartbreaking story of the unlikely friendship between a wealthy boy and the son of his father’s servant, caught in the tragic sweep of history. The Kite Runner transports readers to Afghanistan at a tense and crucial moment of change and destruction. A powerful story of friendship, it is also about the power of reading, the price of betrayal, and the possibility of redemption.",
       "category": "Story",
+      "available_quantity": 2,
       "image_url": "https://covers.openlibrary.org/b/isbn/9781594631931-L.jpg"
     },
     {
@@ -78,6 +87,7 @@
       "author": "Daniel Kahneman",
       "description": "The phenomenal New York Times Bestseller by Nobel Prize-winner Daniel Kahneman. The engaging narrative takes us on a groundbreaking tour of the mind and explains the two systems that drive the way we think. System 1 is fast, intuitive, and emotional; System 2 is slower, more deliberative, and more logical. The book reveals where we can and cannot trust our intuitions.",
       "category": "Science",
+      "available_quantity": 6,
       "image_url": "https://covers.openlibrary.org/b/isbn/9780374533557-L.jpg"
     },
     {
@@ -86,6 +96,7 @@
       "author": "George Orwell",
       "description": "Among the seminal texts of the 20th century, Nineteen Eighty-Four is a rare work that grows more haunting as its futuristic purgatory becomes more real. Published in 1949, the book offers political satirist George Orwell's nightmarish vision of a totalitarian, bureaucratic world and one poor stiff's attempt to find individuality. The brilliance of the novel is Orwell's prescience of modern life.",
       "category": "Story",
+      "available_quantity": 5,
       "image_url": "https://covers.openlibrary.org/b/isbn/9780451524935-L.jpg"
     },
     {
@@ -94,6 +105,7 @@
       "author": "Kyle Simpson",
       "description": "It seems like there's never enough time to truly understand how JavaScript works. This series of books dives deep into the core mechanisms of the language. Instead of just learning the surface-level syntax and workarounds, this book will teach you the inner workings of JS, helping you master closures, objects, prototypes, and asynchronous programming in a robust way.",
       "category": "Tech",
+      "available_quantity": 7,
       "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE1Dwvl8XdOGuVkwfg9UJjzVRMlWG0ZEcYS717PWbDwg&s"
     }
   ]
