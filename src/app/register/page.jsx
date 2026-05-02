@@ -15,13 +15,40 @@ import {
   Label,
   TextField,
 } from "@heroui/react";
+import { useForm } from "react-hook-form";
+import { authClient } from "@/lib/auth-client";
+import { toast } from "sonner";
 
-export default function RegisterPage() {
+const  RegisterPage = () => {
+  const { register, handleSubmit } = useForm();
   const [isVisible, setIsVisible] = useState(false);
 
-  const handleRegisterSubmit = (e) => {
-    e.preventDefault();
-   
+  const handleRegisterSubmit = async(data) => {
+    // .preventDefault();
+    console.log(data, "Name, Email and Password");
+    
+    const { data: res, error } = await authClient.signUp.email({
+     
+      name: data.name,
+      email: data.email,
+      password: data.password, 
+      image: data.photoURL,
+      callbackURL: "/login",
+    });
+    if (error) {
+     
+      toast.error(`Registration Failed: ${error.message || "Something went wrong!"}`);
+      console.log("Error details:", error);
+    } 
+    if (res) {
+      
+      toast.success("Registration Successful! 🎉 Please login to continue.");
+      
+     
+    }
+ 
+    
+    console.log(res, error);
   };
 
   return (
@@ -75,7 +102,7 @@ export default function RegisterPage() {
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">Register</h2>
           <p className="text-slate-400 mb-8">Create an account to start borrowing books.</p>
 
-          <Form className="space-y-4" onSubmit={handleRegisterSubmit}>
+          <Form className="space-y-4" onSubmit={handleSubmit(handleRegisterSubmit)}>
             <TextField
               isRequired
               name="name"
@@ -89,6 +116,7 @@ export default function RegisterPage() {
             >
               <Label className="text-sm font-medium text-slate-300">Name</Label>
               <Input
+                {...register("name")}
                 placeholder="Enter your full name"
                 className="w-full rounded-xl border border-white/10 bg-[#0F172A]/80 px-4 py-3 text-white placeholder:text-slate-500 outline-none focus:border-[#FB8C00]/70 focus:ring-2 focus:ring-[#FB8C00]/20 transition"
               />
@@ -108,6 +136,7 @@ export default function RegisterPage() {
             >
               <Label className="text-sm font-medium text-slate-300">Photo URL</Label>
               <Input
+                {...register("photoURL")}
                 placeholder="Enter your photo URL"
                 className="w-full rounded-xl border border-white/10 bg-[#0F172A]/80 px-4 py-3 text-white placeholder:text-slate-500 outline-none focus:border-[#FB8C00]/70 focus:ring-2 focus:ring-[#FB8C00]/20 transition"
               />
@@ -128,6 +157,7 @@ export default function RegisterPage() {
             >
               <Label className="text-sm font-medium text-slate-300">Email</Label>
               <Input
+                {...register("email")}
                 placeholder="Enter your email"
                 className="w-full rounded-xl border border-white/10 bg-[#0F172A]/80 px-4 py-3 text-white placeholder:text-slate-500 outline-none focus:border-[#FB8C00]/70 focus:ring-2 focus:ring-[#FB8C00]/20 transition"
               />
@@ -148,6 +178,7 @@ export default function RegisterPage() {
               <Label className="text-sm font-medium text-slate-300">Password</Label>
               <InputGroup className="flex items-center rounded-xl border border-white/10 bg-[#0F172A]/80 pr-3 focus-within:border-[#FB8C00]/70 focus-within:ring-2 focus-within:ring-[#FB8C00]/20 transition">
                 <InputGroup.Input
+                {...register("password")}
                   minLength={8}
                   type={isVisible ? "text" : "password"}
                   placeholder="Enter your password"
@@ -206,3 +237,4 @@ export default function RegisterPage() {
     </section>
   );
 }
+export default RegisterPage;

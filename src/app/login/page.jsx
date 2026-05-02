@@ -14,12 +14,36 @@ import {
   Label,
   TextField,
 } from "@heroui/react";
+import { useForm } from "react-hook-form";
+import { authClient } from "@/lib/auth-client";
+import { toast } from "sonner";
 
 export default function LoginPage() {
+  const { register, handleSubmit } = useForm();
   const [isVisible, setIsVisible] = useState(false);
 
-  const handleLoginSubmit = (e) => {
-    e.preventDefault();
+  const handleLoginSubmit = async(data) => {
+    console.log("Trying to login with:", data.email);
+    
+    
+    const { data: res, error } = await authClient.signIn.email({
+      email: data.email,
+      password: data.password,
+      rememberMe: true,
+    callbackURL: "/",
+    });
+    
+    // Login er Conditions 
+    if (error) {
+      
+      toast.error(`Login Failed: ${error.message || "Invalid credentials!"}`);
+      console.log("Login Error:", error);
+    } 
+    else if (res) {
+      // Login success hole
+      toast.success("Welcome back! Login Successful. 🎉");
+    
+    }
     
   };
 
@@ -70,7 +94,9 @@ export default function LoginPage() {
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">Login</h2>
           <p className="text-slate-400 mb-8">Sign in to continue to your library.</p>
 
-          <Form className="space-y-5" onSubmit={handleLoginSubmit}>
+  
+          <Form className="space-y-5" 
+          onSubmit={handleSubmit(handleLoginSubmit)}>
             <TextField
               isRequired
               name="email"
@@ -85,6 +111,7 @@ export default function LoginPage() {
             >
               <Label className="text-sm font-medium text-slate-300">Email</Label>
               <Input
+                {...register("email")}
                 placeholder="Enter your email"
                 className="w-full rounded-xl border border-white/10 bg-[#0F172A]/80 px-4 py-3 text-white placeholder:text-slate-500 outline-none focus:border-[#FB8C00]/70 focus:ring-2 focus:ring-[#FB8C00]/20 transition"
               />
@@ -107,6 +134,7 @@ export default function LoginPage() {
                 <InputGroup.Input
                   minLength={8}
                   type={isVisible ? "text" : "password"}
+                  {...register("password")}
                   placeholder="Enter your password"
                   className="w-full bg-transparent px-4 py-3 text-white placeholder:text-slate-500 outline-none"
                 />
