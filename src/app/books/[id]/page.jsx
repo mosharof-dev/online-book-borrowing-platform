@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 import { FaArrowLeft, FaBookOpen, FaLayerGroup, FaUser } from "react-icons/fa";
 
 const BookDetailPage = () => {
@@ -12,6 +13,9 @@ const BookDetailPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
+  const handleBorrowBook = () => {
+    toast.success("Borrow request received. Feature will be activated soon.");
+  };
   useEffect(() => {
     const fetchBook = async () => {
       try {
@@ -147,6 +151,7 @@ const BookDetailPage = () => {
           </div>
 
           <button
+            onClick={handleBorrowBook}
             type="button"
             className="w-full md:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#FB8C00] hover:bg-[#E87500] text-white font-bold shadow-[0_10px_30px_rgba(251,140,0,0.35)] transition"
           >
