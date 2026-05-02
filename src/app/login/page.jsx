@@ -5,13 +5,27 @@ import { CgEye } from "react-icons/cg";
 import { BsEyeSlash } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
+import {
+  Button,
+  FieldError,
+  Form,
+  Input,
+  InputGroup,
+  Label,
+  TextField,
+} from "@heroui/react";
 
 export default function LoginPage() {
   const [isVisible, setIsVisible] = useState(false);
 
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
+    
+  };
+
   return (
-    <section className="min-h-screen py-10 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 rounded-3xl overflow-hidden border border-white/10 bg-[#1E293B]/60 backdrop-blur-md shadow-2xl">
+    <section className=" py-10 ">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 rounded-xl overflow-hidden border border-white/10 bg-[#1E293B]/60 backdrop-blur-md shadow-2xl">
         <div className="relative p-8 md:p-12 bg-[#0F172A] border-b lg:border-b-0 lg:border-r border-white/10">
           <div className="absolute inset-0 bg-linear-to-br from-[#FB8C00]/15 to-transparent pointer-events-none" />
           <div className="relative space-y-6">
@@ -37,6 +51,10 @@ export default function LoginPage() {
                 <p className="text-xs text-slate-400">Main categories</p>
               </div>
             </div>
+            <p className="text-sm text-slate-400 leading-relaxed">
+              Discover Story, Tech, and Science collections with smart filtering, quick previews,
+              and a distraction-free reading focused experience.
+            </p>
             <div className="rounded-2xl border border-[#FB8C00]/20 bg-[#FB8C00]/10 p-5">
               <p className="text-sm text-slate-200 leading-relaxed">
                 &ldquo;Fast login, smooth browsing, and a modern library experience in one place.&rdquo;
@@ -52,41 +70,68 @@ export default function LoginPage() {
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">Login</h2>
           <p className="text-slate-400 mb-8">Sign in to continue to your library.</p>
 
-          <form className="space-y-5">
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-300">Email</label>
-              <input
-                type="email"
+          <Form className="space-y-5" onSubmit={handleLoginSubmit}>
+            <TextField
+              isRequired
+              name="email"
+              type="email"
+              className="space-y-2"
+              validate={(value) => {
+                if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
+                  return "Please enter a valid email address";
+                }
+                return null;
+              }}
+            >
+              <Label className="text-sm font-medium text-slate-300">Email</Label>
+              <Input
                 placeholder="Enter your email"
                 className="w-full rounded-xl border border-white/10 bg-[#0F172A]/80 px-4 py-3 text-white placeholder:text-slate-500 outline-none focus:border-[#FB8C00]/70 focus:ring-2 focus:ring-[#FB8C00]/20 transition"
               />
-            </div>
+              <FieldError className="text-xs text-red-300" />
+            </TextField>
 
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-300">Password</label>
-              <div className="flex items-center rounded-xl border border-white/10 bg-[#0F172A]/80 pr-3 focus-within:border-[#FB8C00]/70 focus-within:ring-2 focus-within:ring-[#FB8C00]/20 transition">
-                <input
+            <TextField
+              isRequired
+              name="password"
+              className="space-y-2"
+              validate={(value) => {
+                if (value.length < 8) return "Password must be at least 8 characters";
+                if (!/[A-Z]/.test(value)) return "Password must contain at least one uppercase letter";
+                if (!/[0-9]/.test(value)) return "Password must contain at least one number";
+                return null;
+              }}
+            >
+              <Label className="text-sm font-medium text-slate-300">Password</Label>
+              <InputGroup className="flex items-center rounded-xl border border-white/10 bg-[#0F172A]/80 pr-3 focus-within:border-[#FB8C00]/70 focus-within:ring-2 focus-within:ring-[#FB8C00]/20 transition">
+                <InputGroup.Input
+                  minLength={8}
                   type={isVisible ? "text" : "password"}
                   placeholder="Enter your password"
                   className="w-full bg-transparent px-4 py-3 text-white placeholder:text-slate-500 outline-none"
                 />
-                <button
-                  type="button"
-                  onClick={() => setIsVisible((prev) => !prev)}
-                  className="text-slate-400 hover:text-[#FB8C00] transition"
-                  aria-label={isVisible ? "Hide password" : "Show password"}
-                >
-                  {isVisible ? <CgEye className="size-5" /> : <BsEyeSlash className="size-5" />}
-                </button>
-              </div>
-            </div>
+                <InputGroup.Suffix className="pr-0">
+                  <Button
+                    isIconOnly
+                    type="button"
+                    variant="ghost"
+                    onPress={() => setIsVisible((prev) => !prev)}
+                    aria-label={isVisible ? "Hide password" : "Show password"}
+                    className="text-slate-400 hover:text-[#FB8C00] bg-transparent hover:bg-transparent"
+                  >
+                    {isVisible ? <CgEye className="size-5" /> : <BsEyeSlash className="size-5" />}
+                  </Button>
+                </InputGroup.Suffix>
+              </InputGroup>
+              <FieldError className="text-xs text-red-300" />
+            </TextField>
 
-            <button
+            <Button
               type="submit"
-              className="w-full rounded-xl bg-[#FB8C00] hover:bg-[#E87500] text-white font-bold py-3 transition shadow-[0_10px_30px_rgba(251,140,0,0.3)]"
+              className="w-full rounded-xl bg-[#FB8C00] hover:bg-[#E87500] text-white font-bold py-3 transition "
             >
               Login
-            </button>
+            </Button>
 
             <div className="relative py-2">
               <div className="h-px bg-white/10" />
@@ -102,7 +147,7 @@ export default function LoginPage() {
               <FcGoogle className="size-5" />
               Continue with Google
             </button>
-          </form>
+          </Form>
 
           <p className="text-sm text-slate-400 mt-7">
             Don&apos;t have an account?{" "}
