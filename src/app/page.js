@@ -6,6 +6,11 @@ import LibraryBenefits from "@/Components/home/LibraryBenefits";
 
 import TrendingSlider from "@/Components/home/TrendingSlider";
 
+export const metadata = {
+  title: "BookBorrowing",
+  description: "Explore, borrow, and read thousands of books digitally. Join our community of readers today.",
+};
+
 export default function Home() {
   return (
     <div className="w-full flex flex-col gap-8 md:gap-12">

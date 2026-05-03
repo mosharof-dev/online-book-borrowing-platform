@@ -1,3 +1,5 @@
+"use client";
+import { useRouter, useSearchParams } from "next/navigation";
 import {
   FaLayerGroup,
   FaHistory,
@@ -13,7 +15,21 @@ const categories = [
   { name: "Science", icon: <FaFlask /> },
 ];
 
-const CategorySidebar = ({ selectedCategory, setSelectedCategory }) => {
+const CategorySidebar = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const selectedCategory = searchParams.get("category") || "All";
+
+  const handleCategoryChange = (cat) => {
+    const params = new URLSearchParams(searchParams);
+    if (cat === "All") {
+      params.delete("category");
+    } else {
+      params.set("category", cat);
+    }
+    router.push(`/books?${params.toString()}`, { scroll: false });
+  };
+
   return (
     <aside className="bg-[#1E293B]/50 backdrop-blur-md border border-white/10 rounded-3xl p-6 h-fit sticky top-24">
       <h2 className="text-xl font-bold text-white mb-8 flex items-center gap-3">
@@ -25,7 +41,7 @@ const CategorySidebar = ({ selectedCategory, setSelectedCategory }) => {
         {categories.map((cat) => (
           <button
             key={cat.name}
-            onClick={() => setSelectedCategory(cat.name)}
+            onClick={() => handleCategoryChange(cat.name)}
             className={`flex items-center justify-between px-5 py-4 rounded-2xl transition-all duration-300 group ${
               selectedCategory === cat.name
                 ? "bg-[#FB8C00] text-white shadow-[0_10px_20px_rgba(251,140,0,0.3)]"

@@ -1,64 +1,46 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
-import { toast } from "sonner";
-import { FaArrowLeft, FaBookOpen, FaLayerGroup, FaUser } from "react-icons/fa";
+import { FaArrowLeft, FaLayerGroup, FaUser } from "react-icons/fa";
+import BorrowButton from "@/Components/books/BorrowButton";
 
-const BookDetailPage = () => {
-  const { id } = useParams();
-  const [book, setBook] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-
-  const handleBorrowBook = () => {
-    toast.success("Borrow request received. Feature will be activated soon.");
-  };
-  useEffect(() => {
-    const fetchBook = async () => {
-      try {
-        setLoading(true);
-        setError("");
-        const res = await fetch(`http://localhost:5000/books/${id}`);
-
-        if (!res.ok) {
-          throw new Error("Book not found");
-        }
-
-        const data = await res.json();
-        setBook(data);
-      } catch (err) {
-        console.error("Book details fetch failed:", err);
-        setError("Could not load this book right now.");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    if (id) fetchBook();
-  }, [id]);
-
-  if (loading) {
-    return (
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 animate-pulse">
-        <div className="h-[500px] rounded-3xl bg-white/5 border border-white/10" />
-        <div className="space-y-4">
-          <div className="h-10 rounded-xl bg-white/5 w-3/4" />
-          <div className="h-6 rounded-lg bg-white/5 w-1/2" />
-          <div className="h-28 rounded-2xl bg-white/5" />
-          <div className="h-12 rounded-xl bg-white/5 w-44" />
-        </div>
-      </div>
-    );
+// Fetch book details on the server for better SEO
+async function getBook(id) {
+  try {
+    const res = await fetch(`http://localhost:5000/books/${id}`, {
+      cache: "no-store",
+    });
+    if (!res.ok) return null;
+    return res.json();
+  } catch (error) {
+    console.error("Fetch error:", error);
+    return null;
   }
+}
 
-  if (error || !book) {
+// Generate dynamic metadata for SEO
+export async function generateMetadata({ params }) {
+  const { id } = await params;
+  const book = await getBook(id);
+
+  return {
+    title: book ? `${book.title} | BookBorrowing` : "Book Not Found",
+    description: book
+      ? book.description.substring(0, 160)
+      : "Details about this book.",
+  };
+}
+
+const BookDetailPage = async ({ params }) => {
+  const { id } = await params;
+  const book = await getBook(id);
+
+  if (!book) {
     return (
       <div className="text-center py-20 rounded-3xl border border-red-400/20 bg-red-500/10">
         <h2 className="text-2xl font-bold text-red-300">Book Not Available</h2>
-        <p className="text-slate-300 mt-2">{error || "This book does not exist."}</p>
+        <p className="text-slate-300 mt-2">
+          This book does not exist or has been removed.
+        </p>
         <Link
           href="/books"
           className="inline-flex items-center gap-2 mt-6 px-5 py-2.5 rounded-xl border border-white/20 text-white hover:border-[#FB8C00] hover:text-[#FB8C00] transition"
@@ -70,7 +52,9 @@ const BookDetailPage = () => {
   }
 
   const availableCount =
-    typeof book.available_quantity === "number" ? book.available_quantity : null;
+    typeof book.available_quantity === "number"
+      ? book.available_quantity
+      : null;
 
   return (
     <section className="space-y-8">
@@ -87,7 +71,7 @@ const BookDetailPage = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 xl:gap-12">
         <div className="relative rounded-3xl p-4 md:p-6 border border-white/10 bg-[#1E293B]/60 backdrop-blur-md shadow-2xl">
           <div className="absolute inset-0 rounded-3xl bg-linear-to-br from-[#FB8C00]/10 to-transparent pointer-events-none" />
-          <div className="relative h-[420px] md:h-[540px] w-full rounded-2xl overflow-hidden bg-[#0F172A] border border-white/10">
+          <div className="relative h-105 md:h-135 w-full rounded-2xl overflow-hidden bg-[#0F172A] border border-white/10">
             <Image
               src={
                 book.image_url ||
@@ -95,6 +79,7 @@ const BookDetailPage = () => {
               }
               alt={book.title}
               fill
+              priority
               className="object-cover"
             />
           </div>
@@ -123,7 +108,9 @@ const BookDetailPage = () => {
               <FaLayerGroup className="text-[#FB8C00]" />
               <div>
                 <p className="text-xs text-slate-400">Category</p>
-                <p className="text-sm text-white font-medium">{book.category}</p>
+                <p className="text-sm text-white font-medium">
+                  {book.category}
+                </p>
               </div>
             </div>
           </div>
@@ -150,14 +137,7 @@ const BookDetailPage = () => {
             </span>
           </div>
 
-          <button
-            onClick={handleBorrowBook}
-            type="button"
-            className="w-full md:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#FB8C00] hover:bg-[#E87500] text-white font-bold shadow-[0_10px_30px_rgba(251,140,0,0.35)] transition"
-          >
-            <FaBookOpen />
-            Borrow This Book
-          </button>
+          <BorrowButton />
         </div>
       </div>
     </section>
