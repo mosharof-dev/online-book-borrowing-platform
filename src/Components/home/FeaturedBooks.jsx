@@ -2,25 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { FaFireAlt } from "react-icons/fa";
+import booksData from "@/data/db.json";
 
-// Using Server Component to fetch data directly
 const FeaturedBooks = async () => {
   let books = [];
 
   try {
-    const res = await fetch(
-      "https://online-book-borrowing-mu.vercel.app/books",
-      {
-        cache: "no-store",
-      },
-    );
-
-    if (res.ok) {
-      const data = await res.json();
-      books = data.slice(0, 4);
-    }
+    books = booksData.books.slice(0, 4);
   } catch (error) {
-    console.error("Failed to fetch books from json-server:", error);
+    console.error("Failed to fetch books from local data:", error);
   }
 
   // Dynamic color for different categories
@@ -75,7 +65,6 @@ const FeaturedBooks = async () => {
 
             {/* Book Image Display Area */}
             <div className="relative h-64 w-full rounded-2xl bg-[#0F172A] border border-white/5 flex items-center justify-center p-4 mb-5 overflow-hidden">
-              {/* Next.js Image Component */}
               <Image
                 src={
                   book.image_url ||
@@ -124,16 +113,12 @@ const FeaturedBooks = async () => {
         ))}
       </div>
 
-      {/* Fallback Error Message if json-server is off */}
+      {/* Fallback Error Message if data is missing */}
       {books.length === 0 && (
         <div className="text-center py-16 bg-[#1E293B]/50 rounded-3xl border border-white/5 border-dashed">
           <p className="text-slate-400 text-lg mb-2">No books found.</p>
           <p className="text-sm text-slate-500">
-            Please make sure your JSON server is running (e.g.,{" "}
-            <code className="bg-black/30 px-2 py-1 rounded">
-              json-server --watch db.json --port 5000
-            </code>
-            ).
+            Please check if the data file exists in the src/data directory.
           </p>
         </div>
       )}

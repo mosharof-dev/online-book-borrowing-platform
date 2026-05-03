@@ -3,6 +3,7 @@ import CategorySidebar from "@/Components/books/CategorySidebar";
 import SearchBar from "@/Components/books/SearchBar";
 import BookCard from "@/Components/books/BookCard";
 import { FaLayerGroup } from "react-icons/fa";
+import booksData from "@/data/db.json";
 
 export const metadata = {
   title: "Explore All Books | BookBorrowing",
@@ -13,14 +14,7 @@ export const metadata = {
 // Fetch books on the server
 async function getBooks() {
   try {
-    const res = await fetch(
-      "https://online-book-borrowing-mu.vercel.app/books",
-      {
-        cache: "no-store",
-      },
-    );
-    if (!res.ok) return [];
-    return res.json();
+    return booksData.books;
   } catch (error) {
     console.error("Error fetching books:", error);
     return [];
@@ -116,7 +110,7 @@ const AllBookPage = async ({ searchParams }) => {
                     {selectedCategory}
                   </span>
                 )}
-                {/* Sorting is now static/URL based, could also be a client component but here we keep it simple */}
+
                 <div className="flex items-center gap-2 border border-white/10 bg-white/5 rounded-lg px-3 py-2">
                   <label htmlFor="sortBy" className="text-sm text-slate-300">
                     Sort by:
@@ -125,7 +119,6 @@ const AllBookPage = async ({ searchParams }) => {
                     id="sortBy"
                     defaultValue={sortBy}
                     className="bg-transparent text-sm text-white outline-none cursor-pointer"
-                    // We will need a small client component if we want this to update URL on change easily
                   >
                     <option className="bg-[#0F172A]" value="default">
                       Default

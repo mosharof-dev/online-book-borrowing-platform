@@ -2,25 +2,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaArrowLeft, FaLayerGroup, FaUser } from "react-icons/fa";
 import BorrowButton from "@/Components/books/BorrowButton";
+import booksData from "@/data/db.json";
 
-// Fetch book details on the server for better SEO
 async function getBook(id) {
   try {
-    const res = await fetch(
-      `https://online-book-borrowing-mu.vercel.app/books/${id}`,
-      {
-        cache: "no-store",
-      },
-    );
-    if (!res.ok) return null;
-    return res.json();
+    const book = booksData.books.find((b) => b.id.toString() === id.toString());
+    return book || null;
   } catch (error) {
     console.error("Fetch error:", error);
     return null;
   }
 }
 
-// Generate dynamic metadata for SEO
 export async function generateMetadata({ params }) {
   const { id } = await params;
   const book = await getBook(id);
