@@ -10,12 +10,16 @@ export default function UpdateProfileModal({ isOpen, onClose, user }) {
   const [image, setImage] = useState(user?.image || "");
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    if (user) {
-      setName(user.name);
-      setImage(user.image);
+  const [prevIsOpen, setPrevIsOpen] = useState(isOpen);
+
+ 
+  if (isOpen !== prevIsOpen) {
+    setPrevIsOpen(isOpen);
+    if (isOpen && user) {
+      setName(user.name || "");
+      setImage(user.image || "");
     }
-  }, [user]);
+  }
 
   const handleUpdate = async () => {
     if (!name.trim()) {
@@ -78,7 +82,7 @@ export default function UpdateProfileModal({ isOpen, onClose, user }) {
                   <Label className="text-xs sm:text-sm font-medium text-slate-300">Full Name</Label>
                   <div className="relative flex items-center group">
                     <div className="absolute left-4 z-20 text-slate-500 group-focus-within:text-[#FB8C00] transition-colors">
-                      <FaUser className="text-sm sm:text-base" />
+                      <FaUser />
                     </div>
                     <Input
                       placeholder="Enter your name"
@@ -93,7 +97,7 @@ export default function UpdateProfileModal({ isOpen, onClose, user }) {
                   <Label className="text-xs sm:text-sm font-medium text-slate-300">Profile Image URL</Label>
                   <div className="relative flex items-center group">
                     <div className="absolute left-4 z-20 text-slate-500 group-focus-within:text-[#FB8C00] transition-colors">
-                      <FaLink className="text-sm sm:text-base" />
+                      <FaLink />
                     </div>
                     <Input
                       placeholder="Paste image URL here"
