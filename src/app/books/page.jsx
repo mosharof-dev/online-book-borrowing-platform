@@ -6,15 +6,19 @@ import { FaLayerGroup } from "react-icons/fa";
 
 export const metadata = {
   title: "Explore All Books | BookBorrowing",
-  description: "Browse through our extensive collection of digital books. Filter by category or search for specific titles.",
+  description:
+    "Browse through our extensive collection of digital books. Filter by category or search for specific titles.",
 };
 
 // Fetch books on the server
 async function getBooks() {
   try {
-    const res = await fetch("http://localhost:5000/books", {
-      cache: "no-store",
-    });
+    const res = await fetch(
+      "https://online-book-borrowing-mu.vercel.app/books",
+      {
+        cache: "no-store",
+      },
+    );
     if (!res.ok) return [];
     return res.json();
   } catch (error) {
@@ -35,25 +39,31 @@ const AllBookPage = async ({ searchParams }) => {
   let filteredBooks = books;
 
   if (selectedCategory !== "All") {
-    filteredBooks = filteredBooks.filter((book) => book.category === selectedCategory);
+    filteredBooks = filteredBooks.filter(
+      (book) => book.category === selectedCategory,
+    );
   }
 
   if (searchQuery.trim() !== "") {
     filteredBooks = filteredBooks.filter(
       (book) =>
         book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        book.author.toLowerCase().includes(searchQuery.toLowerCase())
+        book.author.toLowerCase().includes(searchQuery.toLowerCase()),
     );
   }
 
   if (sortBy === "category-asc") {
-    filteredBooks = [...filteredBooks].sort((a, b) => a.category.localeCompare(b.category));
+    filteredBooks = [...filteredBooks].sort((a, b) =>
+      a.category.localeCompare(b.category),
+    );
   } else if (sortBy === "author-asc") {
-     filteredBooks = [...filteredBooks].sort((a, b) => a.author.localeCompare(b.author));
+    filteredBooks = [...filteredBooks].sort((a, b) =>
+      a.author.localeCompare(b.author),
+    );
   }
 
   return (
-    <div className="min-h-screen bg-[#0F172A] py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#0F172A] py-12 ">
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <div className="mb-12 text-center md:text-left">
@@ -62,15 +72,19 @@ const AllBookPage = async ({ searchParams }) => {
           </h1>
           <p className="text-slate-400 max-w-2xl">
             Browse through our extensive collection of digital books. Filter by
-            category or search for specific titles to find exactly what you&apos;re
-            looking for.
+            category or search for specific titles to find exactly what
+            you&apos;re looking for.
           </p>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-10">
           {/* Sidebar Area - Wrapped in Suspense because it uses useSearchParams */}
           <div className="w-full lg:w-1/4">
-            <Suspense fallback={<div className="h-96 bg-white/5 animate-pulse rounded-3xl" />}>
+            <Suspense
+              fallback={
+                <div className="h-96 bg-white/5 animate-pulse rounded-3xl" />
+              }
+            >
               <CategorySidebar />
             </Suspense>
           </div>
@@ -78,7 +92,11 @@ const AllBookPage = async ({ searchParams }) => {
           {/* Main Content Area */}
           <div className="w-full lg:w-3/4 flex flex-col gap-8">
             {/* Search Bar - Wrapped in Suspense */}
-            <Suspense fallback={<div className="h-16 bg-white/5 animate-pulse rounded-2xl" />}>
+            <Suspense
+              fallback={
+                <div className="h-16 bg-white/5 animate-pulse rounded-2xl" />
+              }
+            >
               <SearchBar />
             </Suspense>
 
@@ -91,7 +109,7 @@ const AllBookPage = async ({ searchParams }) => {
                 </span>{" "}
                 {filteredBooks.length === 1 ? "book" : "books"}
               </p>
-              
+
               <div className="flex items-center gap-2 self-start sm:self-auto">
                 {selectedCategory !== "All" && (
                   <span className="text-xs bg-[#FB8C00]/10 text-[#FB8C00] px-3 py-2 rounded-lg border border-[#FB8C00]/20">
@@ -109,9 +127,15 @@ const AllBookPage = async ({ searchParams }) => {
                     className="bg-transparent text-sm text-white outline-none cursor-pointer"
                     // We will need a small client component if we want this to update URL on change easily
                   >
-                    <option className="bg-[#0F172A]" value="default">Default</option>
-                    <option className="bg-[#0F172A]" value="category-asc">Category</option>
-                    <option className="bg-[#0F172A]" value="author-asc">Author</option>
+                    <option className="bg-[#0F172A]" value="default">
+                      Default
+                    </option>
+                    <option className="bg-[#0F172A]" value="category-asc">
+                      Category
+                    </option>
+                    <option className="bg-[#0F172A]" value="author-asc">
+                      Author
+                    </option>
                   </select>
                 </div>
               </div>
@@ -127,7 +151,7 @@ const AllBookPage = async ({ searchParams }) => {
             ) : (
               <div className="flex flex-col items-center justify-center py-20 text-center bg-white/5 rounded-3xl border border-dashed border-white/10">
                 <div className="w-20 h-20 bg-white/5 rounded-full flex items-center justify-center mb-6">
-                   <FaLayerGroup className="text-slate-500 text-3xl" />
+                  <FaLayerGroup className="text-slate-500 text-3xl" />
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-2">
                   No Books Found

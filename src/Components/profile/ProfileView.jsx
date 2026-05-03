@@ -8,7 +8,7 @@ const ProfileView = ({ user }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <div className="max-w-5xl mx-auto py-8 sm:py-12 px-4">
+    <div className="max-w-7xl mx-auto py-8 sm:py-12 ">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
         {/* Left Column: Profile Card */}
         <div className="lg:col-span-1">

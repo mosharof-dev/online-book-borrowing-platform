@@ -6,9 +6,12 @@ import BorrowButton from "@/Components/books/BorrowButton";
 // Fetch book details on the server for better SEO
 async function getBook(id) {
   try {
-    const res = await fetch(`http://localhost:5000/books/${id}`, {
-      cache: "no-store",
-    });
+    const res = await fetch(
+      `https://online-book-borrowing-mu.vercel.app/books/${id}`,
+      {
+        cache: "no-store",
+      },
+    );
     if (!res.ok) return null;
     return res.json();
   } catch (error) {
