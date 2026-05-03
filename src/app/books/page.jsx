@@ -4,6 +4,7 @@ import SearchBar from "@/Components/books/SearchBar";
 import BookCard from "@/Components/books/BookCard";
 import { FaLayerGroup } from "react-icons/fa";
 import booksData from "@/data/db.json";
+import SortFilter from "@/Components/books/SortFilter";
 
 export const metadata = {
   title: "Explore All Books | BookBorrowing",
@@ -111,26 +112,13 @@ const AllBookPage = async ({ searchParams }) => {
                   </span>
                 )}
 
-                <div className="flex items-center gap-2 border border-white/10 bg-white/5 rounded-lg px-3 py-2">
-                  <label htmlFor="sortBy" className="text-sm text-slate-300">
-                    Sort by:
-                  </label>
-                  <select
-                    id="sortBy"
-                    defaultValue={sortBy}
-                    className="bg-transparent text-sm text-white outline-none cursor-pointer"
-                  >
-                    <option className="bg-[#0F172A]" value="default">
-                      Default
-                    </option>
-                    <option className="bg-[#0F172A]" value="category-asc">
-                      Category
-                    </option>
-                    <option className="bg-[#0F172A]" value="author-asc">
-                      Author
-                    </option>
-                  </select>
-                </div>
+                <Suspense
+                  fallback={
+                    <div className="h-10 w-32 bg-white/5 animate-pulse rounded-lg" />
+                  }
+                >
+                  <SortFilter />
+                </Suspense>
               </div>
             </div>
 
