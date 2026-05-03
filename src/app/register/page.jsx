@@ -16,15 +16,20 @@ import {
   TextField,
 } from "@heroui/react";
 import { useForm } from "react-hook-form";
-import { authClient } from "@/lib/auth-client";
+import { authClient, loginWithGoogle } from "@/lib/auth-client";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+
 
 const  RegisterPage = () => {
   const { register, handleSubmit } = useForm();
   const [isVisible, setIsVisible] = useState(false);
-
+  const router = useRouter();
+  
   const handleRegisterSubmit = async(data) => {
     // .preventDefault();
+
+ 
     console.log(data, "Name, Email and Password");
     
     const { data: res, error } = await authClient.signUp.email({
@@ -39,11 +44,15 @@ const  RegisterPage = () => {
      
       toast.error(`Registration Failed: ${error.message || "Something went wrong!"}`);
       console.log("Error details:", error);
+      return;
     } 
     if (res) {
       
       toast.success("Registration Successful! 🎉 Please login to continue.");
+      await authClient.signOut(); 
       
+      // 4. Redirect to login page
+      router.push("/login");
      
     }
  
@@ -219,6 +228,7 @@ const  RegisterPage = () => {
 
             <button
               type="button"
+              onClick={loginWithGoogle}
               className="w-full inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 hover:bg-white/10 text-white font-semibold py-3 transition"
             >
               <FcGoogle className="size-5" />

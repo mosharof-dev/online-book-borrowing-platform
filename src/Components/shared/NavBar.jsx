@@ -137,7 +137,7 @@ const Navbar = () => {
         <div className="navbar-end w-auto flex items-center justify-end gap-2 sm:gap-3 min-w-0 flex-1 lg:flex-initial">
           {isPending ? (
             <div className="flex items-center gap-2 sm:gap-3 animate-pulse">
-              <div className="h-4 w-20 sm:w-28 bg-white/10 rounded-md hidden sm:block" />
+             
               <div className="h-9 w-9 sm:h-10 sm:w-10 bg-white/10 rounded-full" />
               <div className="h-9 w-20 sm:w-24 bg-white/10 rounded-full" />
             </div>
@@ -145,12 +145,7 @@ const Navbar = () => {
             <>
               {/* Desktop / tablet: name + avatar + logout */}
               <div className="hidden sm:flex items-center gap-2 sm:gap-3 min-w-0">
-                <span
-                  className="text-sm sm:text-base font-semibold text-slate-100 max-w-[100px] md:max-w-[180px] truncate"
-                  title={user.name}
-                >
-                  {user.name}
-                </span>
+                
                 <div className="relative h-9 w-9 sm:h-10 sm:w-10 shrink-0 rounded-full overflow-hidden border-2 border-[#FB8C00]/50 ring-2 ring-[#FB8C00]/20 shadow-md">
                   <Image
                     src={avatarSrc}

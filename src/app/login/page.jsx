@@ -15,7 +15,7 @@ import {
   TextField,
 } from "@heroui/react";
 import { useForm } from "react-hook-form";
-import { authClient } from "@/lib/auth-client";
+import { authClient, loginWithGoogle } from "@/lib/auth-client";
 import { toast } from "sonner";
 
 export default function LoginPage() {
@@ -169,6 +169,7 @@ export default function LoginPage() {
             </div>
 
             <button
+            onClick={loginWithGoogle}
               type="button"
               className="w-full inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 hover:bg-white/10 text-white font-semibold py-3 transition"
             >

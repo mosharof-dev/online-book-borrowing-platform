@@ -51,13 +51,13 @@ export default function UpdateProfileModal({ isOpen, onClose, user }) {
   if (!isOpen) return null;
 
   return (
-    <Modal isOpen={isOpen} onOpenChange={onClose}>
+    <Modal isOpen={isOpen} onOpenChange={onClose} placement="center">
       <ModalBackdrop className="fixed inset-0 z-[999] bg-black/60 backdrop-blur-sm animate-in fade-in duration-300" />
       
-      <ModalContainer className="fixed inset-0 z-[1000] overflow-y-auto outline-none">
-        <div className="min-h-full flex items-center justify-center p-2 sm:p-4">
+      <ModalContainer className="fixed inset-0 z-[1000] overflow-y-auto outline-none w-full min-h-full flex items-center justify-center p-2 sm:p-4 ">  
           <ModalDialog className="bg-[#1E293B] border border-white/10 rounded-[2rem] w-full max-w-md overflow-hidden shadow-2xl outline-none ring-0 animate-in zoom-in-95 duration-200">
-            <ModalHeader className="p-5 sm:p-8 border-b border-white/5">
+             
+             <ModalHeader className="p-5 sm:p-8 border-b border-white/5">
               <ModalHeading className="text-xl sm:text-2xl font-bold text-white">Update Profile</ModalHeading>
               <p className="text-xs sm:text-sm text-slate-400 mt-1">Manage your digital library identity and preferences.</p>
             </ModalHeader>
@@ -113,7 +113,7 @@ export default function UpdateProfileModal({ isOpen, onClose, user }) {
             <ModalFooter className="p-5 sm:p-8 border-t border-white/5 flex flex-col sm:flex-row justify-end gap-3 bg-white/[0.02]">
               <Button 
                 onPress={onClose} 
-                className="order-2 sm:order-1 w-full sm:w-auto px-6 py-2.5 rounded-xl sm:rounded-2xl text-slate-400 hover:text-white hover:bg-white/5 transition-colors font-medium text-sm sm:text-base"
+                className="order-2 sm:order-1 w-full sm:w-auto px-6 py-2.5 rounded-xl sm:rounded-2xl text-black hover:text-white hover:bg-white/5 transition-colors font-medium text-sm sm:text-base"
               >
                 Discard
               </Button>
@@ -127,7 +127,6 @@ export default function UpdateProfileModal({ isOpen, onClose, user }) {
               </Button>
             </ModalFooter>
           </ModalDialog>
-        </div>
       </ModalContainer>
     </Modal>
   );

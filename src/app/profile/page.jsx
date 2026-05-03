@@ -45,7 +45,12 @@ const ProfilePage = () => {
                                 
                             </div>
                             
-                            <h2 className="flex justify-center items-center gap-2 text-xl sm:text-2xl font-bold text-white mb-1"><FaUserAlt className="text-[#FB8C00]/60 text-base sm:text-lg" /> {user.name}</h2>
+                            <div className="w-full px-2 flex justify-center items-center gap-2 mb-1">
+                                <FaUserAlt className="text-[#FB8C00]/60 shrink-0 text-base sm:text-lg" />
+                                <h2 className="text-xl sm:text-xl font-bold text-white truncate">
+                                    {user.name}
+                                </h2>
+                            </div>
                             <p className="text-slate-400 text-xs sm:text-sm mb-6 sm:mb-8 flex items-center gap-2">
                                 <FaEnvelope className="text-[#FB8C00]/60" />
                                 {user.email}
