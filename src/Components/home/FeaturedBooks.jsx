@@ -42,13 +42,9 @@ const FeaturedBooks = async () => {
           </span>
         </h2>
         <p className="text-slate-400 mt-2 max-w-3xl leading-relaxed text-sm md:text-base">
-          Immerse yourself in our carefully curated collection of the most
-          sought-after and critically acclaimed books. Whether you are looking
-          for a gripping science fiction adventure, a deep dive into modern
-          technology, or a timeless literary masterpiece, our featured selection
-          has something special for every type of reader. Explore the pages,
-          discover new perspectives, and digitally borrow your next favorite
-          read today before these limited-stock titles run out!
+          Explore our carefully curated collection of critically acclaimed
+          books. From gripping sci-fi adventures to deep tech insights, discover
+          new perspectives and digitally borrow your next favorite read today!
         </p>
       </div>
 
@@ -60,7 +56,6 @@ const FeaturedBooks = async () => {
             // Full Card Wrapper with Hover Border Animation
             className="group flex flex-col bg-[#1E293B] p-4 rounded-xl border border-white/5 hover:border-[#FB8C00]/60 transition-all duration-500 shadow-lg hover:shadow-[0_0_30px_rgba(251,140,0,0.15)] relative overflow-hidden"
           >
-            {/* Subtle Background Glow inside the card on hover */}
             <div className="absolute inset-0 bg-linear-to-b from-[#FB8C00]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
 
             {/* Book Image Display Area */}
@@ -113,7 +108,6 @@ const FeaturedBooks = async () => {
         ))}
       </div>
 
-      {/* Fallback Error Message if data is missing */}
       {books.length === 0 && (
         <div className="text-center py-16 bg-[#1E293B]/50 rounded-3xl border border-white/5 border-dashed">
           <p className="text-slate-400 text-lg mb-2">No books found.</p>

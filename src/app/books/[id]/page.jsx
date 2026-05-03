@@ -3,6 +3,9 @@ import Link from "next/link";
 import { FaArrowLeft, FaLayerGroup, FaUser } from "react-icons/fa";
 import BorrowButton from "@/Components/books/BorrowButton";
 import booksData from "@/data/db.json";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 
 async function getBook(id) {
   try {
@@ -27,6 +30,14 @@ export async function generateMetadata({ params }) {
 }
 
 const BookDetailPage = async ({ params }) => {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  if (!session) {
+    redirect("/login");
+  }
+
   const { id } = await params;
   const book = await getBook(id);
 

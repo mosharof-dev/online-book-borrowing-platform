@@ -36,9 +36,7 @@ const Navbar = () => {
         <Link
           href="/"
           className={`relative px-3 py-2 transition-all duration-300 font-medium ${
-            isActive("/")
-              ? "text-[#FB8C00]"
-              : "text-slate-300 hover:text-white"
+            isActive("/") ? "text-[#FB8C00]" : "text-slate-300 hover:text-white"
           } group`}
         >
           Home
@@ -99,7 +97,9 @@ const Navbar = () => {
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-[#0F172A]/80 backdrop-blur-lg shadow-lg" : "bg-[#0F172A]"
+        isScrolled
+          ? "bg-[#0F172A]/80 backdrop-blur-lg shadow-lg"
+          : "bg-[#0F172A]"
       }`}
     >
       <div className="navbar max-w-7xl mx-auto w-full px-3 sm:px-6 lg:px-8 py-2 min-h-16 flex flex-wrap sm:flex-nowrap justify-between items-center gap-y-2 relative z-10">
@@ -130,14 +130,15 @@ const Navbar = () => {
 
         {/* Center: Desktop nav */}
         <div className="navbar-center hidden lg:flex flex-1 justify-center">
-          <ul className="menu menu-horizontal px-1 gap-2 xl:gap-4">{navLinks}</ul>
+          <ul className="menu menu-horizontal px-1 gap-2 xl:gap-4">
+            {navLinks}
+          </ul>
         </div>
 
         {/* Right: auth + hamburger */}
         <div className="navbar-end w-auto flex items-center justify-end gap-2 sm:gap-3 min-w-0 flex-1 lg:flex-initial">
           {isPending ? (
             <div className="flex items-center gap-2 sm:gap-3 animate-pulse">
-             
               <div className="h-9 w-9 sm:h-10 sm:w-10 bg-white/10 rounded-full" />
               <div className="h-9 w-20 sm:w-24 bg-white/10 rounded-full" />
             </div>
@@ -145,7 +146,6 @@ const Navbar = () => {
             <>
               {/* Desktop / tablet: name + avatar + logout */}
               <div className="hidden sm:flex items-center gap-2 sm:gap-3 min-w-0">
-                
                 <div className="relative h-9 w-9 sm:h-10 sm:w-10 shrink-0 rounded-full overflow-hidden border-2 border-[#FB8C00]/50 ring-2 ring-[#FB8C00]/20 shadow-md">
                   <Image
                     src={avatarSrc}
@@ -153,7 +153,9 @@ const Navbar = () => {
                     fill
                     sizes="40px"
                     className="object-cover"
-                    unoptimized={avatarSrc.startsWith("https://api.dicebear.com")}
+                    unoptimized={avatarSrc.startsWith(
+                      "https://api.dicebear.com",
+                    )}
                   />
                 </div>
                 <Button
@@ -168,7 +170,7 @@ const Navbar = () => {
                 </Button>
               </div>
 
-              {/* Mobile: compact avatar + colored logout icon button */}
+              {/* Mobile: compact avatar  */}
               <div className="flex sm:hidden items-center gap-2">
                 <div className="relative h-9 w-9 rounded-full overflow-hidden border-2 border-[#FB8C00]/50">
                   <Image
@@ -177,7 +179,9 @@ const Navbar = () => {
                     fill
                     sizes="36px"
                     className="object-cover"
-                    unoptimized={avatarSrc.startsWith("https://api.dicebear.com")}
+                    unoptimized={avatarSrc.startsWith(
+                      "https://api.dicebear.com",
+                    )}
                   />
                 </div>
                 <Button
@@ -247,8 +251,12 @@ const Navbar = () => {
               {user ? (
                 <>
                   <li className="px-2 py-2 rounded-xl bg-white/5 border border-white/10">
-                    <p className="text-xs text-slate-500 uppercase tracking-wide">Signed in</p>
-                    <p className="text-sm font-semibold text-white truncate">{user.name}</p>
+                    <p className="text-xs text-slate-500 uppercase tracking-wide">
+                      Signed in
+                    </p>
+                    <p className="text-sm font-semibold text-white truncate">
+                      {user.name}
+                    </p>
                   </li>
                   <li>
                     <Button

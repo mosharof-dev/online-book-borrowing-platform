@@ -1,11 +1,11 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { Avatar, Button, Card, CardContent, Separator } from "@heroui/react";
 import { FaEdit, FaBook, FaHeart, FaEnvelope, FaUserAlt } from "react-icons/fa";
-import UpdateProfileModal from "@/Components/profile/UpdateProfileModal";
+import { useRouter } from "next/navigation";
 
 const ProfileView = ({ user }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const router = useRouter();
 
   return (
     <div className="max-w-7xl mx-auto py-8 sm:py-12 ">
@@ -36,7 +36,7 @@ const ProfileView = ({ user }) => {
 
               <Button
                 className="w-full bg-[#FB8C00] text-white font-bold py-5 sm:py-6 rounded-2xl shadow-lg shadow-[#FB8C00]/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 text-sm sm:text-base"
-                onPress={() => setIsModalOpen(true)}
+                onPress={() => router.push("/profile/update")}
               >
                 <FaEdit />
                 Update Profile
@@ -116,13 +116,6 @@ const ProfileView = ({ user }) => {
           </div>
         </div>
       </div>
-
-      {/* Update Modal */}
-      <UpdateProfileModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        user={user}
-      />
     </div>
   );
 };

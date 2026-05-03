@@ -63,7 +63,6 @@ const CategorySidebar = () => {
         ))}
       </div>
 
-      {/* Quick Stats or Promo info could go here for "Pro" feel */}
       <div className="mt-12 p-5 rounded-2xl bg-linear-to-br from-[#FB8C00]/20 to-transparent border border-[#FB8C00]/10">
         <p className="text-xs text-slate-400 leading-relaxed">
           Explore our vast library of hand-picked titles across various genres.

@@ -20,12 +20,10 @@ const BookCard = ({ book }) => {
       // Full Card Wrapper with Hover Border Animation
       className="group flex flex-col bg-[#1E293B] p-4 rounded-xl border border-white/5 hover:border-[#FB8C00]/60 transition-all duration-500 shadow-lg hover:shadow-[0_0_30px_rgba(251,140,0,0.15)] relative overflow-hidden"
     >
-      {/* Subtle Background Glow inside the card on hover */}
       <div className="absolute inset-0 bg-linear-to-b from-[#FB8C00]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
 
       {/* Book Image Display Area */}
       <div className="relative h-64 w-full rounded-2xl bg-[#0F172A] border border-white/5 flex items-center justify-center p-4 mb-5 overflow-hidden">
-        {/* Next.js Image Component */}
         <Image
           src={
             book.image_url ||
