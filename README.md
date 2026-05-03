@@ -1,36 +1,126 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 📚 BookBorrowing - Modern Online Book Borrowing Platform
 
-## Getting Started
+[![Live Demo](https://img.shields.io/badge/demo-live-orange.svg?style=for-the-badge)](https://online-book-borrowing-ten.vercel.app/)
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+[![Better Auth](https://img.shields.io/badge/Auth-Better--Auth-blue?style=for-the-badge)](https://www.better-auth.com/)
 
-First, run the development server:
+**BookBorrowing** is a premium, high-performance digital library platform built with the latest **Next.js 15 (App Router)**. It offers a seamless experience for readers to explore, search, and manage their digital book collection with a stunning glassmorphic UI.
 
+---
+
+## 🚀 Live Links
+
+- **Live Deployment:** [online-book-borrowing-ten.vercel.app](https://online-book-borrowing-ten.vercel.app/)
+- **GitHub Repository:** [github.com/mosharof-dev/online-book-borrowing](https://github.com/mosharof-dev/online-book-borrowing)
+
+---
+
+## ✨ Key Features
+
+- **💎 Premium Design:** Stunning dark-themed UI with glassmorphism, smooth animations, and a modern color palette.
+- **🔐 Robust Authentication:** Secure login and registration powered by **Better Auth**, supporting both **Google OAuth** and traditional Email/Password.
+- **📱 Fully Responsive:** Optimized for all devices—from large desktop monitors to compact mobile screens.
+- **🔍 Advanced Search & Filter:** Instantly find books by title or author, and filter by categories like Tech, Science, and Story.
+- **⚡ Server-Side Power:** Leverages Next.js **Server Components** for ultra-fast initial page loads and superior SEO.
+- **👤 User Profile Management:** Dedicated profile dashboard to update personal information and manage borrowed books.
+- **📑 Dynamic Book Details:** SEO-friendly detail pages for every book with dynamic metadata and real-time availability status.
+- **📦 Optimized Data Loading:** Local JSON-based data source for high reliability and zero-latency deployment.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework:** Next.js 15 (App Router)
+- **Styling:** Tailwind CSS (Vanilla CSS)
+- **UI Library:** HeroUI v3 (Headless UI)
+- **Authentication:** Better Auth
+- **Database:** MongoDB (Session Management)
+- **Icons:** React Icons / Lucide
+- **Notifications:** Sonner (Toast notifications)
+- **Animations:** Framer Motion / CSS Keyframes
+
+---
+
+## 📥 Getting Started
+
+Follow these steps to set up the project locally:
+
+### 1. Clone the repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/mosharof-dev/online-book-borrowing.git
+cd online-book-borrowing
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Install dependencies
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### 3. Environment Variables
+Create a `.env` file in the root directory and add the following:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```env
+# Authentication
+BETTER_AUTH_SECRET=your_secret_key_here
+BETTER_AUTH_URL=http://localhost:3000
 
-## Learn More
+# Database
+MONGODB_URL=your_mongodb_connection_string
 
-To learn more about Next.js, take a look at the following resources:
+# Social Auth (Google)
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 4. Run the development server
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 📂 Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```text
+src/
+├── app/               # Next.js App Router (Pages & API)
+├── Components/        # Reusable UI Components
+│   ├── home/          # Landing page sections
+│   ├── books/         # Book listing & details components
+│   ├── profile/       # User dashboard components
+│   └── shared/        # NavBar, Footer, etc.
+├── data/              # Local book data (db.json)
+├── lib/               # Shared utilities & Auth configuration
+└── assets/            # Static images and illustrations
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 📸 Screen Previews
+
+- **Home Page:** Hero section with featured picks and trending slider.
+- **All Books:** Dynamic grid with real-time filtering and search.
+- **Profile:** Personal dashboard with update capabilities.
+- **404 Page:** Custom-designed "Not Found" experience.
+
+---
+
+## 🤝 Contributing
+
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+**Developed with ❤️ by [Mosharof Dev](https://github.com/mosharof-dev)**
